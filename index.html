@@ -7,6 +7,7 @@
     <title>Kat's LocationRedirect</title>
   </head>
   <body>
+    <h1>Open the console to see the magic!</h1>
     <script>
 
         
@@ -19,11 +20,16 @@
                 alert("Welcome, Mac user!");
             }
 
-        var location =
+        // var location = 
                 function getLocation() {
                     navigator.geolocation.getCurrentPosition(userLocation);
+                // get position.coords returned here
                 }
-
+                // This is a function call
+                // Declare your variables in front of function call to access what is returned in the function
+                var location = getLocation();
+                // Functions can return things, and then you call the function and store it in a varible
+                
 
 //Identifies latitude and longitude from the geolocation
 
@@ -32,17 +38,17 @@
                 var longitude = position.coords.longitude;
             //testing the function by logging the coordinates
                 console.log("Latitude : " + latitude + " Longitude: " + longitude);
+                return position.coords;
             }
 
            
 //Testing to see if function can correctly identify location.
 // It can, but as-is the site crashes after the "else" statement:
-
-            if (location === -89.912506) {
-                alert("you're in the eastern half of the united states");
+            if (location.longitude < -89.912506) {
+                console.log("eastern");
             }
             else {
-                alert("you're in the western half of the united states");
+                console.log("western");
             }
         
      
